@@ -1,0 +1,585 @@
+{
+	"info": {
+		"_postman_id": "4175f3e1-8e93-4b42-89f7-afd292dbc098",
+		"name": "Bank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/balance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accountNumber",
+						"value": "900000000001",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/bank/api/v1/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"bank",
+						"api",
+						"v1",
+						"balance"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/balance -  200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accountNumber",
+								"value": "900000000001",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/bank/api/v1/balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"balance"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Aug 2021 10:54:33 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"accountNumber\": \"900000000001\",\n    \"balance\": 1000\n}"
+				},
+				{
+					"name": "/balance - 404 Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accountNumber",
+								"value": "900000000005",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/bank/api/v1/balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"balance"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Aug 2021 11:59:12 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ref\": \"4aac2bf8-a79f-4051-88d3-8f2ce82d274f\",\n    \"message\": \"account does not exist\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/deposit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNumber\": \"900000000001\",\r\n    \"amount\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/bank/api/v1/deposit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"bank",
+						"api",
+						"v1",
+						"deposit"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/deposit - 400 Bad Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"900000000001\",\r\n    \"amount\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/bank/api/v1/deposit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"deposit"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Aug 2021 12:10:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    \"amount must be greater than 0\"\n]"
+				},
+				{
+					"name": "/deposit - 200 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"900000000001\",\r\n    \"amount\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/bank/api/v1/deposit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"deposit"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Aug 2021 12:01:33 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"accountNumber\": \"900000000001\",\n    \"previousBalance\": 1000,\n    \"updatedBalance\": 2000\n}"
+				}
+			]
+		},
+		{
+			"name": "/withdraw",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNumber\": \"900000000001\",\r\n    \"amount\": 5000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/bank/api/v1/withdraw",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"bank",
+						"api",
+						"v1",
+						"withdraw"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/withdraw - 400 Bad Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"900000000001\",\r\n    \"amount\": 5000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/bank/api/v1/withdraw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"withdraw"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Aug 2021 12:17:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ref\": \"49c19b1f-4ce5-4d61-9e7c-7e99e9055c52\",\n    \"message\": \"low balance\"\n}"
+				},
+				{
+					"name": "/withdraw - 200 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"900000000001\",\r\n    \"amount\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/bank/api/v1/withdraw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"withdraw"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Aug 2021 12:17:34 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"accountNumber\": \"900000000001\",\n    \"previousBalance\": 2000,\n    \"updatedBalance\": 1500\n}"
+				}
+			]
+		},
+		{
+			"name": "/transfer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"benefactor\": \"900000000001\",\r\n    \"beneficiary\": \"900000000002\",\r\n    \"amount\": 5000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/bank/api/v1/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"bank",
+						"api",
+						"v1",
+						"transfer"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/transfer - 200 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"benefactor\": \"900000000001\",\r\n    \"beneficiary\": \"900000000003\",\r\n    \"amount\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/bank/api/v1/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"transfer"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Aug 2021 12:20:30 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"beneficiary\": \"900000000003\",\n    \"amount\": 1000,\n    \"status\": \"success\"\n}"
+				},
+				{
+					"name": "/transfer - 400 Bad Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"benefactor\": \"900000000001\",\r\n    \"beneficiary\": \"900000000003\",\r\n    \"amount\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/bank/api/v1/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"transfer"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Aug 2021 12:20:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ref\": \"05067214-afe5-4f6c-b3bf-db6299122980\",\n    \"message\": \"low balance\"\n}"
+				},
+				{
+					"name": "/transfer - 400 Bad Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"benefactor\": \"900000000001\",\r\n    \"beneficiary\": \"900000000002\",\r\n    \"amount\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/bank/api/v1/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"transfer"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Aug 2021 12:22:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ref\": \"65767f13-bd82-47cc-b892-149ca5126f05\",\n    \"message\": \"benefactor and beneficiary must be different\"\n}"
+				}
+			]
+		}
+	]
+}
